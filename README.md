@@ -1,6 +1,6 @@
-# metaclean3
+# MetaClean3.0
 
-MetaClean3.0 cleans/removes anomalous events in [FCS (flow cytometry standard)](https://isac-net.org/page/Data-Standards) data detected during irregular flow.
+MetaClean3.0 cleans/removes low-quality events in [FCS (flow cytometry standard)](https://isac-net.org/page/Data-Standards) data detected during irregular flow.
 
 This method is developed for and funded by [Metafora-biosystems](https://www.metafora-biosystems.com/). This method is implemented for the [MetaFlow](https://www.metafora-biosystems.com/metaflow/) platform.
 
@@ -20,6 +20,14 @@ metaclean3_public$ sudo apt install python3-pip
 
 **Install this package**:
 
+Install this package via PyPI:
+
+```console
+metaclean3_public$ pip install metaclean3
+```
+
+OR install this package locally:
+
 1. Download this repository.
 2. Build and install the package; on Linux, go to the repository directory:
 
@@ -32,7 +40,7 @@ metaclean3_public$ pip install .
 
 ## Usage
 
-See full API [here](***).
+See API [here](https://metaclean3-metafora-biosystems-public-2521aa7e9f24ff31e1e5a27a1.gitlab.io/autoapi/metaclean3/index.html).
 
 MetaClean3.0 contains three classes, to of which you will directly interact with:
 
@@ -102,9 +110,11 @@ d = MetaClean().clean(data=binned_data) # all columns will be used.
 
 ## Fine-tuning MetaClean3.0
 
-For most cases, we recommend using default settings. However, if there are cases when you want to fine-tune results, some common arguments you can change are listed below. See attributes in the `MetaCleanFCS`*** for more details.
+For most cases, we recommend using default settings. However, if there are cases when you want to fine-tune results, some common arguments you can change are listed below. See attributes in the [`MetaCleanFCS`](https://metaclean3-metafora-biosystems-public-2521aa7e9f24ff31e1e5a27a1.gitlab.io/autoapi/metaclean3/index.html#metaclean3.MetaCleanFCS) and [`MetaClean`](https://metaclean3-metafora-biosystems-public-2521aa7e9f24ff31e1e5a27a1.gitlab.io/autoapi/metaclean3/index.html#metaclean3.MetaClean) for more details.
 
 ### `FCSfile` arguments control how events are binned
+
+See `FCSfile` API [here](https://metaclean3-metafora-biosystems-public-2521aa7e9f24ff31e1e5a27a1.gitlab.io/autoapi/metaclean3/index.html#metaclean3.FCSfile).
 
 `min_bin_size` and `max_bin_size` (default: `2000` and `10000`): The minimum and maximum number of bins allowed. If you have a large file with more than ten million events and you want MetaClean3.0 results to be more precise, you can increase `max_bin_size`. Adjust with moderation.
 
@@ -113,6 +123,8 @@ f = FCSfile(data=data, time_step=get_timestep(meta), min_bin_size=2000, max_bin_
 ```
 
 ### `MetaCleanFCS` arguments control feature selection and generation
+
+See `MetaCleanFCS` API [here](https://metaclean3-metafora-biosystems-public-2521aa7e9f24ff31e1e5a27a1.gitlab.io/autoapi/metaclean3/index.html#metaclean3.MetaCleanFCS).
 
 `fluo_chans_no` (default: `4`): The number of fluorescent measurements to consider.
 
@@ -132,7 +144,7 @@ d = MetaCleanFCS(fluo_chans_clean=['FL1', 'FL2']).apply(fcs=f)
 d = MetaCleanFCS(candidate_chans_type=fluo).apply(fcs=f)
 ```
 
-`rm_outliers` (default: 'all'): MetaClean3.0 detects and removes outliers so they do not skew MetaClean3.0's judgement when removing anomalous events. If, in the final results, you do not want to remove all of these outliers, you can specify to keep them by setting `rm_outliers` to `'all'`. If you want to keep some of the less outlying events, set this parameter to 'some' and if you want to remove all outliers, set this parameter to 'none'.
+`rm_outliers` (default: 'all'): MetaClean3.0 detects and removes outliers so they do not skew MetaClean3.0's judgement when removing low-quality events. If, in the final results, you do not want to remove all of these outliers, you can specify to keep them by setting `rm_outliers` to `'all'`. If you want to keep some of the less outlying events, set this parameter to 'some' and if you want to remove all outliers, set this parameter to 'none'.
 
 ```python
 d = MetaCleanFCS(rm_outliers='all').apply(fcs=f)
@@ -146,7 +158,7 @@ d = MetaCleanFCS(n_cores=-1).apply(fcs=f)
 
 ### `MetaClean` arguments control degree of leniency
 
-If you want MetaClean3.0 to remove more/less events, additional arguments you can tune are as below. See attributes in the `MetaClean`*** for more details.
+See `MetaClean` API [here](https://metaclean3-metafora-biosystems-public-2521aa7e9f24ff31e1e5a27a1.gitlab.io/autoapi/metaclean3/index.html#metaclean3.MetaClean).
 
 `min_ref_percent` (default: `0.4` 40\%; range: `[0, 1]`): The minimum percentage of bins they want MetaClean3.0 to keep.
 
@@ -174,7 +186,7 @@ d = MetaCleanFCS(percent_shift=[0.15]).apply(fcs=f)
 
 ## API/Documentation
 
-See full API [here](***).
+See API [here](https://metaclean3-metafora-biosystems-public-2521aa7e9f24ff31e1e5a27a1.gitlab.io/autoapi/metaclean3/index.html).
 
 This repository uses [Sphinx](https://www.sphinx-doc.org/) to generate documentation contained in the `docs`. To generate documentation locally on Linux:
 
