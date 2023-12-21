@@ -32,6 +32,8 @@ metaclean3_public$ pip install .
 
 ## Usage
 
+See full API [here](***).
+
 MetaClean3.0 contains three classes, to of which you will directly interact with:
 
 ![MetaClean3.0 classes](package_classes.png)
@@ -172,11 +174,9 @@ d = MetaCleanFCS(percent_shift=[0.15]).apply(fcs=f)
 
 ## API/Documentation
 
-**Full API**: <https://metafora-biosystems.gitlab.io/-/data-science-dev/metaclean3_public/-/jobs/5719586985/artifacts/public/autoapi/metaclean3/index.html>
+See full API [here](***).
 
-This repository uses [Sphinx](https://www.sphinx-doc.org/) to generate documentation contained in the `docs`.
-
-To generate documentation locally on Linux:
+This repository uses [Sphinx](https://www.sphinx-doc.org/) to generate documentation contained in the `docs`. To generate documentation locally on Linux:
 
 1. install Sphinx for Python:
 

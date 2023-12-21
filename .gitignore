@@ -2,7 +2,6 @@ tests/data/*.png
 tests/data/*.fcs
 docs/build
 tests/test_metaclean_.py
-.pypirc
 venv/
 
 # Byte-compiled / optimized / DLL files
