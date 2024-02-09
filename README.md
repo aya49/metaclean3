@@ -244,8 +244,6 @@ See the 'Issues' section of this repository.
 
 ## Citation
 
-This package is an implementation of the MetaClean3.0 method as described in the paper:
+If this package helped you in any way please cite MetaClean3.0's paper:
 
-***
-
-If this package helped you in any way please consider citing!
+(TBP)
