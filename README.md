@@ -2,7 +2,7 @@
 
 MetaClean3.0 cleans/removes low-quality events in [FCS (flow cytometry standard)](https://isac-net.org/page/Data-Standards) data detected during irregular flow.
 
-This method is developed for and funded by [Metafora-biosystems](https://www.metafora-biosystems.com/). This method is implemented for the [MetaFlow](https://www.metafora-biosystems.com/metaflow/) platform.
+This method is developed for and funded by [Metafora biosystem](https://www.metafora-biosystems.com/)'s [MetaFlow](https://www.metafora-biosystems.com/metaflow/) platform.
 
 ## Installation
 
