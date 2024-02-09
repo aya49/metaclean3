@@ -228,7 +228,7 @@ metaclean3_public$ twine check dist/* # check if package description renders on 
 
 ```console
 metaclean3_public$ twine upload -r testpypi dist/* # upload
-metaclean3_public$ $ python -m pip install -i https://test.pypi.org/simple metaclean3 # test install
+metaclean3_public$ python -m pip install -i https://test.pypi.org/simple metaclean3 # test install
 ```
 
 **Upload package to PyPI**:
