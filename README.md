@@ -200,7 +200,7 @@ metaclean3_public$ # sphinx-quickstart docs
 
 2. Generate the HTML documentation:
 
-```
+```console
 metaclean3_public$ sphinx-build -M html docs/source/ docs/build/
 ```
 
@@ -219,7 +219,7 @@ metaclean3_public$ python3 -m unittest discover tests
 ```console
 metaclean3_public$ python -m pip install pip-tools
 metaclean3_public$ pip-compile --extra dev pyproject.toml # generate requirements.txt
-metaclean3_public$ pip install -r requirements.txt
+metaclean3_public$ pip install -r requirements.txt # test installation of dependencies
 metaclean3_public$ python3 -m build # builds package into a zip
 metaclean3_public$ twine check dist/* # check if package description renders on PyPI
 ```
