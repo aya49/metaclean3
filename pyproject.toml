@@ -39,8 +39,8 @@ dev = [
 
 [project.urls]
 Documentation = "https://metafora-biosystems.gitlab.io/-/data-science-dev/metaclean3_public/-/jobs/5719586985/artifacts/public/autoapi/metaclean3/index.html"
-Source = "https://github.com/***"
-Tracker = "https://github.com/***/issues"
+Source = "https://gitlab.com/metafora-biosystems_public/metaclean3"
+Tracker = "https://gitlab.com/metafora-biosystems_public/metaclean3/-/issues"
 
 [tool.flit.module]
 name = "metaclean3"

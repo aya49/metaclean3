@@ -220,7 +220,7 @@ metaclean3_public$ python3 -m unittest discover tests
 metaclean3_public$ python -m pip install pip-tools
 metaclean3_public$ pip-compile --extra dev pyproject.toml # generate requirements.txt
 metaclean3_public$ pip install -r requirements.txt # test installation of dependencies
-metaclean3_public$ python3 -m build # builds package into a zip
+metaclean3_public$ sudo python3 -m build # builds package into a zip
 metaclean3_public$ twine check dist/* # check if package description renders on PyPI
 ```
 
@@ -240,7 +240,7 @@ metaclean3_public$ pip install metaclean3 # test install
 
 ## Support
 
-See the 'Issues' section of this repository.
+See the [issues](https://gitlab.com/metafora-biosystems_public/metaclean3/-/issues) section of this repository.
 
 ## Citation
 
