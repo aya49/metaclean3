@@ -184,6 +184,10 @@ d = MetaCleanFCS(p_thres=0.05).apply(fcs=f)
 d = MetaCleanFCS(percent_shift=[0.15]).apply(fcs=f)
 ```
 
+## Edge cases
+
+- Duplicate rows: if there are duplicate rows in input matrix `data`, the last column of these duplicate rows will be purturbed by a neglige-able value of around 1/50000. This is to prevent infinite values when calculating the density feature.
+
 ## API/Documentation
 
 See API [here](https://metaclean3-metafora-biosystems-public-2521aa7e9f24ff31e1e5a27a1.gitlab.io/autoapi/metaclean3/index.html).
