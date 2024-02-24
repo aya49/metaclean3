@@ -675,6 +675,7 @@ class MetaCleanFCS():
     def apply(
         self,
         fcs: Type[FCSfile] | None = None,
+        randomize_duplicates_tf: bool = True,
         return_binned_data: bool = False,
         **kwargs
     ):# -> pd.DataFrame:
@@ -683,6 +684,7 @@ class MetaCleanFCS():
         Args:
             fcs (FCSfile | None, optional): Initialized `FCSfile` data class.
                 Defaults to None.
+            randomize_duplicates_tf (bool, optional): See `apply_features()`.
             return_binned_data (bool, optional): Whether or not to return binned
                 data. Defaults to False.
             \**kwargs param: See `FCSfile` class attributes, namely `data`
@@ -700,7 +702,11 @@ class MetaCleanFCS():
         """
         start0 = time.time()
         data0 = self.apply_features(
-            fcs=fcs, calculate_outlier2=self.rm_outliers == 'some', **kwargs)
+            fcs=fcs, 
+            randomize_duplicates_tf=randomize_duplicates_tf, 
+            calculate_outlier2=self.rm_outliers == 'some', 
+            **kwargs
+        )
         data1 = self.apply_clean(data=data0)
         if self.verbose:
             print(' + Total time for MetaCleanFCS: {}\'s'.format(
@@ -722,6 +728,7 @@ class MetaCleanFCS():
     def apply_features(
         self,
         fcs: FCSfile | None = None,
+        randomize_duplicates_tf: bool = True,
         calculate_outlier2: bool = False,
         **kwargs
     ):# -> pd.DataFrame:
@@ -729,6 +736,9 @@ class MetaCleanFCS():
 
         Args:
             fcs (FCSfile | None, optional): _description_. Defaults to None.
+            randomize_duplicates_tf (bool, optional): Whether or not to 
+                randomize duplicates. Only set this to false if duplicates in
+                the input data have been dealth with already.
             calculate_outlier2 (bool, optional): Whether or not to identify
                 outliers again more leniently if user wishes to remove only
                 some outliers. Defaults to False.
@@ -768,14 +778,19 @@ class MetaCleanFCS():
         )
         # scale data
         # 210 seconds
-        ds_input = randomize_duplicates(
-            self.fcs.data[self.clean_chans],
-            strict=self.strict_remove_duplicates,
-            seed=self.random_seed
-        )
+        if randomize_duplicates_tf:
+            ds_input = randomize_duplicates(
+                self.fcs.data[self.clean_chans],
+                strict=self.strict_remove_duplicates,
+                seed=self.random_seed
+            )
+        else:
+            ds_input = copy.copy(self.fcs.data[self.clean_chans])
+        
         if self.verbose:
             print(' + Time to choose channels and check duplicates: {}\'s ({})'.format(
                 np.round(time.time() - start, 3), self.clean_chans))
+        
         start = time.time()
         ds = RobustScaler().fit_transform(ds_input)
         bin_values = self.fcs.data[self.fcs.bin_chan]

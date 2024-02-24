@@ -187,6 +187,11 @@ d = MetaCleanFCS(percent_shift=[0.15]).apply(fcs=f)
 ## Edge cases
 
 - Duplicate rows: if there are duplicate rows in input matrix `data`, the last column of these duplicate rows will be purturbed by a neglige-able value of around 1/50000. This is to prevent infinite values when calculating the density feature.
+    - If you already deal with duplicate rows outside of MetaClean3.0, you can remove this step by setting `randomize_duplicates_tf` to `False` to shorten runtime:
+
+```python
+d = MetaCleanFCS(percent_shift=[0.15]).apply(fcs=f, randomize_duplicates_tf=False)
+```
 
 ## API/Documentation
 
